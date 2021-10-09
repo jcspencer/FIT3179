@@ -15,7 +15,7 @@
           },
 
           "data": {
-            "url": "data/states.json",
+            "url": "https://jcspencer.github.io/FIT3179/data/states.json",
             "format": {"type": "topojson",  "feature": "STE_2016_AUST"}
           },
 
@@ -42,7 +42,7 @@
             },
 
             "data": {
-                "url": "data/nsw_fires.json.old",
+                "url": "https://jcspencer.github.io/FIT3179/data/nsw_fires.json.old",
                 "format": {"type": "topojson", "feature": "simplified_nsw_fires"}
             },
 

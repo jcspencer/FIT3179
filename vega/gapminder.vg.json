@@ -34,7 +34,7 @@
             "labelFontSize": 14
         }
     },
-    "vconcat": [
+    "hconcat": [
       {
         "encoding": {
           "color": {
@@ -45,9 +45,11 @@
               "type": "nominal",
               "scale": {
                 "scheme": "tableau20"
-              }
+              },
+              "legend": null
             },
-            "value": "lightgray"
+            "value": "lightgray",
+            "legend": null
           },
           "size": {
             "title": "Fire Area (km2)",
@@ -71,8 +73,8 @@
             "type": "quantitative"
           }
         },
-        "width": 600,
-        "height": 300,
+        "width": 900,
+        "height": 400,
         "mark": "point",
         "params": [{
           "name": "brush",
@@ -95,7 +97,8 @@
           "x": {"aggregate": "count"},
           "y": {"title": "Fire Cause", "field": "d_Cause"}
         },
-        "width": 600,
+        "width": 300,
+        "height": 400,
         "mark": "bar",
         "params": [{
           "name": "click",

@@ -1,10 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
     "data": {
         "url": "data/area_by_date_cause.json"
     },
-
+    "title": "Fire Burnt Area by Category",
     "transform": [
         {
             "filter": {
@@ -14,7 +13,6 @@
             }
         }
     ],
-
     "vconcat": [
         {
             "height": 400,
@@ -30,15 +28,17 @@
                         "format": "%b %Y",
                         "tickSize": 0
                     },
-                    "scale": {"domain": {"param": "brush"}}
+                    "scale": {
+                        "domain": {
+                            "param": "brush"
+                        }
+                    }
                 },
-
                 "y": {
                     "aggregate": "sum",
                     "field": "Area",
                     "axis": null
                 },
-
                 "color": {
                     "field": "d_Cause",
                     "scale": {
@@ -46,20 +46,27 @@
                     },
                     "title": "Cause of Fire"
                 },
-        
                 "opacity": {
-                    "condition": {"param": "cause", "value": 1},
+                    "condition": {
+                        "param": "cause",
+                        "value": 1
+                    },
                     "value": 0.2
                 }
             },
-
-            "params": [{
-                "name": "cause",
-                "select": {"type": "point", "fields": ["d_Cause"]},
-                "bind": "legend"
-            }]
+            "params": [
+                {
+                    "name": "cause",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "d_Cause"
+                        ]
+                    },
+                    "bind": "legend"
+                }
+            ]
         },
-
         {
             "height": 100,
             "width": "container",
@@ -86,20 +93,27 @@
                         "scheme": "tableau20"
                     }
                 },
-        
                 "opacity": {
-                    "condition": {"param": "cause", "value": 1},
+                    "condition": {
+                        "param": "cause",
+                        "value": 1
+                    },
                     "value": 0.2
                 }
             },
-
-            "params": [{
-                "name": "brush",
-                "select": {"type": "interval", "encodings": ["x"]}
-            }]
+            "params": [
+                {
+                    "name": "brush",
+                    "select": {
+                        "type": "interval",
+                        "encodings": [
+                            "x"
+                        ]
+                    }
+                }
+            ]
         }
     ],
-
     "config": {
         "axis": {
             "titleFont": "PT Serif",

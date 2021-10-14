@@ -340,15 +340,16 @@ html, button, input, select, textarea,
     font-family: 'Open Sans', sans-serif;
 }
 
-.blockquote {
-    font-family: 'PT Serif', serif;
-    font-size: 2rem;
+p {
+    font-size: 1.2rem;
     line-height: 1.2em;
-    text-align: center;
 }
 
-.blockquote-footer {
-    display: block;
-    font-size: 80%;
-    color: #6c757d;
+.v-center-outer {
+    display: table; 
+}
+
+.v-center-inner {
+    display:table-cell;
+    vertical-align:middle;
 }

@@ -1,0 +1,111 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Bar chart with text labels. Set domain to make the frame cover the labels.",
+    "data": {
+        "url": "data/burnt_per_year.json"
+    },
+    "height": 400,
+    "width": "container",
+
+    "title": "Area Burnt (km^2) per Year",
+    
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "nominal"
+        },
+        "y": {
+            "field": "Area",
+            "type": "quantitative",
+            "title": "Area (km^2)"
+        },
+        "strokeWidth": {
+            "condition": [
+                {
+                    "param": "select",
+                    "empty": false,
+                    "value": 2
+                },
+                {
+                    "param": "highlight",
+                    "empty": false,
+                    "value": 1
+                }
+            ],
+            "value": 0
+        },
+
+        "tooltip": [
+            {
+                "field": "Year",
+                "type": "nominal",
+                "title": "Year"
+            },
+            {
+                "field": "Area",
+                "type": "quantitative",
+                "title": "Area (km^2)",
+                "format": ".1f"
+            }
+        ]
+    },
+    "layer": [
+        {
+            "mark": {
+                "type": "bar",
+                "fill": "#4C78A8",
+                "stroke": "black",
+                "cursor": "pointer"
+            },
+
+            "params": [
+                {
+                    "name": "highlight",
+                    "select": {
+                        "type": "point",
+                        "on": "mouseover"
+                    }
+                },
+                {
+                    "name": "select",
+                    "select": "point"
+                }
+            ]
+            
+        },
+        {
+            "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "dx": 0,
+                "dy": -15
+            },
+            "encoding": {
+                "text": {
+                    "field": "Area",
+                    "type": "quantitative"
+                }
+            }
+        }
+    ],
+    "config": {
+        "axis": {
+            "titleFont": "PT Serif",
+            "labelFont": "Open Sans"
+        },
+        "title": {
+            "font": "PT Serif",
+            "fontSize": 24
+        },
+        "legend": {
+            "titleFont": "Open Sans",
+            "titleFontSize": 16,
+            "labelFont": "Open Sans",
+            "labelFontSize": 14
+        },
+        "axisX": {
+            "labelAngle": -30
+        }
+    }
+}

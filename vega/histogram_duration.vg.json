@@ -1,0 +1,96 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Relative frequency histogram. The data is binned with first transform. The number of values per bin and the total number are calculated in the second and third transform to calculate the relative frequency in the last transformation step.",
+    "data": {
+        "url": "data/duration_by_fire.json"
+    },
+    "title": {
+        "text": "Distribution of Fire Durations (Days) [2000-2021]",
+        "fontSize": 18,
+        "color": "#777"
+    },
+
+    "transform": [
+        {
+            "filter": {
+                "field": "DurationDays",
+                "lt": 200
+            }
+        },
+        {
+            "bin": {
+                "step": 1
+            },
+            "field": "DurationDays",
+            "as": "bin_DurationDays"
+        },
+        {
+            "aggregate": [
+                {
+                    "op": "count",
+                    "as": "Count"
+                }
+            ],
+            "groupby": [
+                "bin_DurationDays",
+                "bin_DurationDays_end"
+            ]
+        },
+        {
+            "joinaggregate": [
+                {
+                    "op": "sum",
+                    "field": "Count",
+                    "as": "TotalCount"
+                }
+            ]
+        },
+        {
+            "calculate": "datum.Count/datum.TotalCount",
+            "as": "PercentOfTotal"
+        }
+    ],
+    "mark": {
+        "type": "bar",
+        "tooltip": true
+    },
+    "encoding": {
+        "x": {
+            "title": "Duration (days)",
+            "field": "bin_DurationDays",
+            "bin": {
+                "binned": true
+            }
+        },
+        "x2": {
+            "field": "bin_DurationDays_end"
+        },
+        "y": {
+            "title": "Relative Frequency",
+            "field": "PercentOfTotal",
+            "type": "quantitative",
+            "axis": {
+                "format": ".1~%"
+            }
+        }
+    },
+    "height": 400,
+    "width": "container",
+    "config": {
+        "axis": {
+            "titleFont": "Open Sans",
+            "labelFont": "Open Sans",
+            "labelFontSize": 14
+        },
+        "title": {
+            "font": "PT Serif",
+            "fontSize": 24
+        },
+        "legend": {
+            "titleFont": "Open Sans",
+            "titleFontSize": 16,
+            "labelFont": "Open Sans",
+            "labelFontSize": 14
+        }
+    }
+}

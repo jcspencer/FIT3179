@@ -29,7 +29,7 @@
                 <a class="pure-menu-heading" href="">A Country on Fire</a>
         
                 <ul class="pure-menu-list">
-                    <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
+                    <li class="pure-menu-item pure-menu-selected"><a href="#row1" class="pure-menu-link">Top</a></li>
                     <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tour</a></li>
                     <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li>
                 </ul>
@@ -38,15 +38,99 @@
     
         <div class="main-section">
             <div class="pure-g">
-                <div class="pure-u-1-2">
+                <div class="pure-u-1-5"></div>
+                <div class="pure-u-3-5 heading-container">
+                    <span class="heading">
+                        A Country on Fire
+                    </span>
+
+                    <p class="sub-heading">
+                        by James Spencer (29702240) [FIT3149 S2_2021]
+                    </p>
+                </div>
+                <div class="pure-u-1-5"></div>
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-4-24"></div>
+                <div class="pure-u-16-24">
+
+                    <blockquote class="blockquote">
+                        "An average fire season here in New South Wales is typically at around 300,000 hectares. It has been extraordinary, it has been unprecedented, and hopefully it's one that none of us here will ever have to experience again."
+
+                        <footer class="blockquote-footer">
+                            <a href="https://www.abc.net.au/news/science/2020-03-05/bushfire-crisis-five-big-numbers/12007716">Inspector Ben Shepherd (NSW Rural Fire Service)</a>
+                        </footer>
+                    </blockquote>
+                </div>
+                <div class="pure-u-4-24"></div>
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-4-24"></div>
+                <div class="pure-u-16-24">
+                    <p>
+                        But just how unusual <i>was</i> the 2019/20 bushfire season in New South Wales?
+                    </p>
+                </div>
+                <div class="pure-u-4-24"></div>
+            </div>
+
+            <div class="pure-g" id="row1">
+                <div class="pure-u-3-5">
                     <div id="viz1" class="vega-vis"></div>
                 </div>
-                <div class="pure-u-1-2">
+                <div class="pure-u-2-5">
                     <div class="figure">
-                    
+                        <p>test</p>
                     </div>
                 </div>
             </div>
+
+            <div class="pure-g" id="row2">
+                <div class="pure-u-3-5">
+                    <div id="viz3" class="vega-vis"></div>
+                </div>
+
+                <div class="pure-u-1-5">
+                </div>
+            </div>
+
+            <div class="pure-g" id="row3">
+                <div class="pure-u-4-24">
+                </div>
+                <div class="pure-u-16-24">
+                    <div id="viz2" class="vega-vis"></div>
+                </div>
+                <div class="pure-u-4-24">
+                </div>
+            </div>
+
+            <div class="pure-g" id="row4">
+                <div class="pure-u-2-5">
+                    <div id="viz4" class="vega-vis"></div>
+                </div>
+                <div class="pure-u-2-5">
+                    <div class="figure">
+                        <p>test</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pure-g" id="row5">
+                <div class="pure-u-20-24">
+                    <div id="viz5" class="vega-vis"></div>
+                </div>
+            </div>
+
+            <div class="pure-g" id="row5">
+                <div class="pure-u-20-24">
+                    <div id="viz6" class="vega-vis"></div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </body>
@@ -54,6 +138,31 @@
 <script type="text/javascript">
     var spec = 'vega/main.vg.json'
     vegaEmbed('#viz1', spec)
+        .then(function(result) {})
+        .catch(console.error);
+
+    var spec2 = 'vega/stream.vg.json'
+    vegaEmbed('#viz2', spec2)
+        .then(function(result) {})
+        .catch(console.error);
+
+    var spec3 = 'vega/area_heatmap.vg.json'
+    vegaEmbed('#viz3', spec3)
+        .then(function(result) {})
+        .catch(console.error);
+
+    var spec4 = 'vega/histogram_duration.vg.json'
+    vegaEmbed('#viz4', spec4)
+        .then(function(result) {})
+        .catch(console.error);
+
+    var spec5 = 'vega/test.vg.json'
+    vegaEmbed('#viz5', spec5)
+        .then(function(result) {})
+        .catch(console.error);
+
+    var spec6 = 'vega/gapminder.vg.json'
+    vegaEmbed('#viz6', spec6)
         .then(function(result) {})
         .catch(console.error);
 </script>

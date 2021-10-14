@@ -1,0 +1,119 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "data": {
+        "url": "data/area_by_date_cause.json"
+    },
+
+    "transform": [
+        {
+            "filter": {
+                "timeUnit": "year",
+                "field": "Year",
+                "lte": "2000"
+            }
+        }
+    ],
+
+    "vconcat": [
+        {
+            "height": 400,
+            "width": "container",
+            "mark": "area",
+            "encoding": {
+                "x": {
+                    "timeUnit": "yearmonth",
+                    "field": "Date",
+                    "type": "temporal",
+                    "axis": {
+                        "domain": false,
+                        "format": "%b %Y",
+                        "tickSize": 0
+                    },
+                    "scale": {"domain": {"param": "brush"}}
+                },
+
+                "y": {
+                    "aggregate": "sum",
+                    "field": "Area",
+                    "axis": null
+                },
+
+                "color": {
+                    "field": "d_Cause",
+                    "scale": {
+                        "scheme": "tableau20"
+                    },
+                    "title": "Cause of Fire"
+                },
+        
+                "opacity": {
+                    "condition": {"param": "cause", "value": 1},
+                    "value": 0.2
+                }
+            },
+
+            "params": [{
+                "name": "cause",
+                "select": {"type": "point", "fields": ["d_Cause"]},
+                "bind": "legend"
+            }]
+        },
+
+        {
+            "height": 100,
+            "width": "container",
+            "mark": "area",
+            "encoding": {
+                "x": {
+                    "timeUnit": "yearmonth",
+                    "field": "Date",
+                    "type": "temporal",
+                    "axis": {
+                        "domain": false,
+                        "format": "%Y",
+                        "tickSize": 0
+                    }
+                },
+                "y": {
+                    "aggregate": "sum",
+                    "field": "Area",
+                    "axis": null
+                },
+                "color": {
+                    "field": "d_Cause",
+                    "scale": {
+                        "scheme": "tableau20"
+                    }
+                },
+        
+                "opacity": {
+                    "condition": {"param": "cause", "value": 1},
+                    "value": 0.2
+                }
+            },
+
+            "params": [{
+                "name": "brush",
+                "select": {"type": "interval", "encodings": ["x"]}
+            }]
+        }
+    ],
+
+    "config": {
+        "axis": {
+            "titleFont": "PT Serif",
+            "labelFont": "Open Sans"
+        },
+        "title": {
+            "font": "PT Serif",
+            "fontSize": 24
+        },
+        "legend": {
+            "titleFont": "Open Sans",
+            "titleFontSize": 16,
+            "labelFont": "Open Sans",
+            "labelFontSize": 14
+        }
+    }
+}

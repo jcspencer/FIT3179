@@ -1,0 +1,132 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "data/area_by_date_cause.json"
+    },
+    "vconcat": [
+        {
+            "width": "container",
+            "height": 50,
+            "mark": "line",
+            "encoding": {
+                "x": {
+                    "timeUnit": "yearmonth",
+                    "field": "Date",
+                    "type": "temporal",
+                    "axis": {
+                        "domain": false,
+                        "format": "%b %Y",
+                        "tickSize": 0,
+                        "title": ""
+                    }
+                },
+                "y": {
+                    "field": "Area",
+                    "aggregate": "mean",
+                    "type": "quantitative",
+                    "axis": {
+                        "title": ""
+                    }
+                }
+            },
+            "params": [
+                {
+                    "name": "brush",
+                    "select": {
+                        "type": "interval",
+                        "encodings": [
+                            "x"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "width": "container",
+            "height": 600,
+            "transform": [],
+            "mark": {
+                "type": "circle",
+                "opacity": 0.5,
+                "stroke": "black",
+                "strokeWidth": 1.5
+            },
+            "encoding": {
+                "x": {
+                    "timeUnit": "yearmonth",
+                    "field": "Date",
+                    "type": "temporal",
+                    "axis": {
+                        "domain": false,
+                        "format": "%b %Y",
+                        "tickSize": 0
+                    },
+                    "scale": {
+                        "domain": {
+                            "param": "brush"
+                        }
+                    }
+                },
+                "y": {
+                    "field": "d_Cause",
+                    "type": "nominal",
+                    "axis": {
+                        "title": ""
+                    },
+                    "sort": "size"
+                },
+                "size": {
+                    "field": "Area",
+                    "type": "quantitative",
+                    "title": "Area of Fire (km2)",
+                    "legend": {
+                        "clipHeight": 30
+                    },
+                    "scale": {
+                        "rangeMax": 5000
+                    }
+                },
+                "color": {
+                    "field": "d_Cause",
+                    "type": "nominal",
+                    "legend": null
+                },
+                "tooltip": [
+                    {
+                        "field": "d_Cause",
+                        "type": "nominal",
+                        "title": "Cause"
+                    },
+                    {
+                        "field": "Area",
+                        "type": "quantitative",
+                        "title": "Area"
+                    },
+                    {
+                        "field": "Date",
+                        "type": "temporal",
+                        "title": "Date",
+                        "format": "%B, %Y"
+                    }
+                ]
+            }
+        }
+    ],
+    "config": {
+        "axis": {
+            "titleFont": "Open Sans",
+            "labelFont": "Open Sans",
+            "labelFontSize": 14
+        },
+        "title": {
+            "font": "PT Serif",
+            "fontSize": 24
+        },
+        "legend": {
+            "titleFont": "Open Sans",
+            "titleFontSize": 16,
+            "labelFont": "Open Sans",
+            "labelFontSize": 14
+        }
+    }
+}

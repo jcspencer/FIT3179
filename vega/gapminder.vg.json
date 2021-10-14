@@ -1,0 +1,108 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Fires over Time",
+    "data": {
+      "url": "data/gapminder.json"
+    },
+    "transform": [
+        {
+            "filter": {
+                "field": "DurationDays",
+                "lte": 60
+            }
+        }
+    ],
+    "config": {
+        "view": {
+            "strokeWidth": 0,
+            "step": 13
+        },
+        "axis": {
+            "titleFont": "PT Serif",
+            "labelFont": "Open Sans",
+            "domain": false
+        },
+        "title": {
+            "font": "PT Serif",
+            "fontSize": 24,
+            "align": "center"
+        },
+        "legend": {
+            "titleFont": "Open Sans",
+            "titleFontSize": 16,
+            "labelFont": "Open Sans",
+            "labelFontSize": 14
+        }
+    },
+    "vconcat": [
+      {
+        "encoding": {
+          "color": {
+            "condition": {
+              "param": "brush",
+              "title": "Fire Cause",
+              "field": "d_Cause",
+              "type": "nominal",
+              "scale": {
+                "scheme": "tableau20"
+              }
+            },
+            "value": "lightgray"
+          },
+          "size": {
+            "title": "Fire Area (km2)",
+            "field": "Area",
+            "scale": {"domain": [-1, 50]},
+            "type": "quantitative"
+          },
+          "x": {
+            "field": "Date",
+            "timeUnit": "yearmonth",
+            "title": "Date",
+            "axis": {"format": "%b %Y"}
+          },
+          "y": {
+            "title": "Average Fire Duration (days)",
+            "field": "DurationDays",
+            "scale": {
+                "domain": [-5, 60],
+                "domainMax": 40
+            },
+            "type": "quantitative"
+          }
+        },
+        "width": 600,
+        "height": 300,
+        "mark": "point",
+        "params": [{
+          "name": "brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }],
+        "transform": [{"filter": {"param": "click"}}]
+      },
+      {
+        "encoding": {
+          "color": {
+            "condition": {
+              "param": "click",
+              "field": "d_Cause",
+              "scale": {
+                "scheme": "tableau20"
+              }
+            },
+            "value": "lightgray"
+          },
+          "x": {"aggregate": "count"},
+          "y": {"title": "Fire Cause", "field": "d_Cause"}
+        },
+        "width": 600,
+        "mark": "bar",
+        "params": [{
+          "name": "click",
+          "select": {"type": "point", "encodings": ["color"]}
+        }],
+        "transform": [{"filter": {"param": "brush"}}]
+      }
+    ]
+  }
+  

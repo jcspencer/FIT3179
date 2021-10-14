@@ -1,51 +1,56 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 1200,
     "height": 800,
-    "title": {"text": "A Country on Fire", "fontSize": 18},
-    "projection": {"type": "equirectangular"},
-
+    "width": "container",
+    "title": {
+        "text": "NSW Bushfires by Location",
+        "fontSize": 18,
+        "color": "#777"
+    },
+    "projection": {
+        "type": "equirectangular"
+    },
     "layer": [
         {
-          "mark": {
-            "type": "geoshape",
-            "fill": "#ddd",
-            "stroke": "#fff",
-            "strokeWidth": 1
-          },
-
-          "data": {
-            "url": "https://jcspencer.github.io/FIT3179/data/states.json",
-            "format": {"type": "topojson",  "feature": "STE_2016_AUST"}
-          },
-
-          "transform": [
-              {
-                  "filter": {
-                      "field": "properties.STE_NAME16",
-                      "oneOf": [
-                          "New South Wales",
-                          "Australian Capital Territory"
-                      ]
-                  }
-              }
-          ]
-        },
-
-        {
-
             "mark": {
                 "type": "geoshape",
-                "stroke": "#f00",
-                "strokeWidth": 1,
+                "fill": "#ddd",
+                "stroke": "#fff",
+                "strokeWidth": 1
+            },
+            "data": {
+                "url": "data/states.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "STE_2016_AUST"
+                }
+            },
+            "transform": [
+                {
+                    "filter": {
+                        "field": "properties.STE_NAME16",
+                        "oneOf": [
+                            "New South Wales",
+                            "Australian Capital Territory"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "mark": {
+                "type": "geoshape",
+                "stroke": "#000",
+                "strokeWidth": 0.2,
                 "opacity": 0.8
             },
-
             "data": {
-                "url": "https://jcspencer.github.io/FIT3179/data/nsw_fires.json.old",
-                "format": {"type": "topojson", "feature": "simplified_nsw_fires"}
+                "url": "data/NSWFireHistory(1).json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "NSWFireHistory"
+                }
             },
-
             "transform": [
                 {
                     "filter": "datum.properties.ErrorCod != ''"
@@ -56,51 +61,73 @@
                 {
                     "filter": "datum.properties.d_Cause != ''"
                 },
-                
                 {
                     "filter": "datum.properties.YearOfFire >= MinimumYear"
                 }
             ],
-
             "encoding": {
                 "color": {
                     "field": "properties.d_Cause",
                     "type": "nominal",
                     "title": "Cause",
-                    "scale": {"scheme": "category20"}
+                    "scale": {
+                        "scheme": "tableau20"
+                    }
                 },
                 "tooltip": [
-                    {"field": "properties.d_Cause", "type": "nominal", "title": "Cause"},
-                    {"field": "properties.WildFireId", "type": "nominal", "title": "Fire ID #"},
-                    {"field": "properties.Intensity", "type": "quantitative", "title": "Size (MW)", "format": ".1f"}
+                    {
+                        "field": "properties.d_Cause",
+                        "type": "nominal",
+                        "title": "Cause"
+                    },
+                    {
+                        "field": "properties.WildFireId",
+                        "type": "nominal",
+                        "title": "Fire ID #"
+                    },
+                    {
+                        "field": "properties.Intensity",
+                        "type": "quantitative",
+                        "title": "Size (MW)",
+                        "format": ".1f"
+                    }
                 ],
                 "opacity": {
-                    "condition": {"param": "legendSelected", "value": 1},
+                    "condition": {
+                        "param": "legendSelected",
+                        "value": 1
+                    },
                     "value": 0.0
                 }
             },
-
             "params": [
                 {
                     "name": "legendSelected",
                     "select": {
                         "type": "point",
-                        "fields": ["properties.d_Cause"]
+                        "fields": [
+                            "properties.d_Cause"
+                        ]
                     },
-                    "bind": {"legend": "dblclick"}
+                    "bind": {
+                        "legend": "dblclick"
+                    }
                 }
             ]
         }
     ],
-
     "params": [
         {
             "name": "MinimumYear",
             "value": 2020,
-            "bind": {"input": "range", "min": 1970, "max": 2020,"step":1 }
+            "bind": {
+                "input": "range",
+                "min": 1970,
+                "max": 2020,
+                "step": 1
+            }
         }
     ],
-
     "config": {
         "axis": {
             "titleFont": "PT Serif",

@@ -1,0 +1,133 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "data/mean_area_burnt_year.json"
+    },
+    "config": {
+        "view": {
+            "strokeWidth": 0,
+            "step": 13
+        },
+        "axis": {
+            "titleFont": "PT Serif",
+            "labelFont": "Open Sans",
+            "domain": false
+        },
+        "title": {
+            "font": "PT Serif",
+            "fontSize": 24,
+            "align": "center"
+        },
+        "legend": {
+            "titleFont": "Open Sans",
+            "titleFontSize": 16,
+            "labelFont": "Open Sans",
+            "labelFontSize": 14,
+            "orient": "left"
+        }
+    },
+
+    "title": {
+        "text": "Distribution of Fire Durations (2000-2021)",
+        "fontSize": 18,
+        "color": "#777"
+    },
+
+    "hconcat": [
+        {
+            "transform": [
+                {
+                    "filter": {
+                        "param": "pts"
+                    }
+                }
+            ],
+            "mark": "rect",
+            "encoding": {
+                "y": {
+                    "field": "Date",
+                    "timeUnit": "year",
+                    "type": "ordinal",
+                    "title": "Year"
+                },
+                "x": {
+                    "field": "Date",
+                    "timeUnit": "month",
+                    "type": "ordinal",
+                    "title": "Month"
+                },
+                "color": {
+                    "field": "Area",
+                    "aggregate": "mean",
+                    "type": "quantitative",
+                    "legend": {
+                        "title": null
+                    },
+                    "scale": {
+                        "scheme": "oranges"
+                    }
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "pts2",
+                        "aggregate": "count"
+                    },
+                    "value": 0.2
+                }
+            },
+            "params": [
+                {
+                    "name": "pts2",
+                    "select": {
+                        "type": "point",
+                        "encodings": [
+                            "x",
+                            "y"
+                        ]
+                    }
+                }
+            ],
+            "height": 400,
+            "width": "container"
+        },
+        {
+            "width": "container",
+            "height": 400,
+            "mark": "bar",
+            "transform": [
+                {
+                    "filter": {
+                        "param": "pts2"
+                    }
+                }
+            ],
+            "params": [
+                {
+                    "name": "pts",
+                    "select": {
+                        "type": "point",
+                        "encodings": [
+                            "y"
+                        ]
+                    }
+                }
+            ],
+            "encoding": {
+                "y": {
+                    "field": "d_Cause",
+                    "sort": "-x"
+                },
+                "x": {
+                    "aggregate": "count"
+                },
+                "color": {
+                    "condition": {
+                        "param": "pts",
+                        "value": "steelblue"
+                    },
+                    "value": "grey"
+                }
+            }
+        }
+    ]
+}

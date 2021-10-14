@@ -10,7 +10,7 @@
  */
 body {
     line-height: 1.7em;
-    color: #7f8c8d;
+    color: #111;
     font-size: 13px;
 }
 
@@ -296,4 +296,59 @@ navbar doesn't cut into the visuals
 
 .vega-viz {
     width: 100%;
+}
+
+.vega-container,
+.vega-container::after,
+.vega-container::before {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+.vega-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vega-embed {
+    width: 100%;
+  }
+
+.heading-container {
+    text-align: center;
+    padding: 25px 25px;
+}
+
+.heading {
+    font-family: 'PT Serif';
+    font-size: 64px;
+    color: black;
+}
+
+.sub-heading {
+    font-family: 'PT Serif';
+    font-size: 16px;
+    color:#888;
+}
+
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+    /* Set your content font stack here: */
+    font-family: 'Open Sans', sans-serif;
+}
+
+.blockquote {
+    font-family: 'PT Serif', serif;
+    font-size: 2rem;
+    line-height: 1.2em;
+    text-align: center;
+}
+
+.blockquote-footer {
+    display: block;
+    font-size: 80%;
+    color: #6c757d;
 }

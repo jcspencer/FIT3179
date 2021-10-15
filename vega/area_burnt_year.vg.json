@@ -6,87 +6,124 @@
     },
     "height": 400,
     "width": "container",
-
     "title": "Area Burnt (km^2) per Year",
-    
-    "encoding": {
-        "x": {
-            "field": "Year",
-            "type": "nominal"
-        },
-        "y": {
-            "field": "Area",
-            "type": "quantitative",
-            "title": "Area (km^2)"
-        },
-        "strokeWidth": {
-            "condition": [
-                {
-                    "param": "select",
-                    "empty": false,
-                    "value": 2
-                },
-                {
-                    "param": "highlight",
-                    "empty": false,
-                    "value": 1
-                }
-            ],
-            "value": 0
-        },
-
-        "tooltip": [
-            {
-                "field": "Year",
-                "type": "nominal",
-                "title": "Year"
-            },
-            {
-                "field": "Area",
-                "type": "quantitative",
-                "title": "Area (km^2)",
-                "format": ".1f"
-            }
-        ]
-    },
     "layer": [
         {
-            "mark": {
-                "type": "bar",
-                "fill": "#4C78A8",
-                "stroke": "black",
-                "cursor": "pointer"
-            },
-
-            "params": [
-                {
-                    "name": "highlight",
-                    "select": {
-                        "type": "point",
-                        "on": "mouseover"
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "type": "nominal"
+                },
+                "y": {
+                    "field": "Area",
+                    "type": "quantitative",
+                    "title": "Area (km^2)"
+                },
+                "strokeWidth": {
+                    "condition": [
+                        {
+                            "param": "select",
+                            "empty": false,
+                            "value": 2
+                        },
+                        {
+                            "param": "highlight",
+                            "empty": false,
+                            "value": 1
+                        }
+                    ],
+                    "value": 0
+                },
+                "tooltip": [
+                    {
+                        "field": "Year",
+                        "type": "nominal",
+                        "title": "Year"
+                    },
+                    {
+                        "field": "Area",
+                        "type": "quantitative",
+                        "title": "Area (km^2)",
+                        "format": ".1f"
                     }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": {
+                        "type": "bar",
+                        "fill": "#4C78A8",
+                        "stroke": "black",
+                        "cursor": "pointer"
+                    },
+                    "params": [
+                        {
+                            "name": "highlight",
+                            "select": {
+                                "type": "point",
+                                "on": "mouseover"
+                            }
+                        },
+                        {
+                            "name": "select",
+                            "select": "point"
+                        }
+                    ]
                 },
                 {
-                    "name": "select",
-                    "select": "point"
+                    "mark": {
+                        "type": "text",
+                        "align": "center",
+                        "baseline": "middle",
+                        "dx": 0,
+                        "dy": -15
+                    },
+                    "encoding": {
+                        "text": {
+                            "field": "Area",
+                            "type": "quantitative"
+                        }
+                    }
                 }
             ]
-            
         },
         {
-            "mark": {
-                "type": "text",
-                "align": "center",
-                "baseline": "middle",
-                "dx": 0,
-                "dy": -15
-            },
             "encoding": {
-                "text": {
+                "y": {
+                    "aggregate": "mean",
                     "field": "Area",
                     "type": "quantitative"
                 }
-            }
+            },
+
+            "layer": [
+                {
+                    "mark": "rule",
+                    "encoding": {
+                        "color": {
+                            "value": "red"
+                        },
+                        "opacity": {
+                            "value": 0.4
+                        },
+                        "size": {
+                            "value": 3
+                        }
+                    }
+                },
+
+                {
+                    "mark": {
+                      "type": "text",
+                      "align": "right",
+                      "baseline": "bottom",
+                      "dx": -2,
+                      "dy": -2,
+                      "x": "width",
+                      "text": "Average"
+                    }
+                  }
+            ]
         }
     ],
     "config": {

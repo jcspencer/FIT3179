@@ -329,14 +329,16 @@ navbar doesn't cut into the visuals
     color: black;
 }
 
-.black {
-    color: black;
-}
-
 .sub-heading {
     font-family: 'PT Serif';
     font-size: 24px;
     color:#888;
+}
+
+.highlight {
+    font-family: 'PT Serif';
+    font-size: 24px;
+    color:#222;
 }
 
 html, button, input, select, textarea,

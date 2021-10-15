@@ -320,17 +320,18 @@ navbar doesn't cut into the visuals
 .heading-container {
     text-align: center;
     padding: 25px 25px;
+    margin: 48px;
 }
 
 .heading {
     font-family: 'PT Serif';
-    font-size: 72px;
+    font-size: 96px;
     color: black;
 }
 
 .sub-heading {
     font-family: 'PT Serif';
-    font-size: 16px;
+    font-size: 24px;
     color:#888;
 }
 

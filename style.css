@@ -391,3 +391,8 @@ p {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+ul {
+    display: table;
+    margin: 0 auto;
+  }

@@ -24,7 +24,7 @@
             "titleFontSize": 16,
             "labelFont": "Open Sans",
             "labelFontSize": 14,
-            "orient": "left"
+            "orient": "right"
         }
     },
     "title": {
@@ -174,7 +174,8 @@
                                 "#d8b5a5"
                             ]
                         },
-                        "field": "d_Cause"
+                        "field": "d_Cause",
+                        "title": "Cause"
                     },
                     "value": "grey"
                 }

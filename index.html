@@ -412,39 +412,24 @@
 </body>
 
 <script type="text/javascript">
-    vegaEmbed('#viz0', 'vega/area_burnt_year.vg.json')
-        .then(function (result) { })
-        .catch(console.error);
+    let visuals = [
+        ['#viz0', 'vega/area_burnt_year.vg.json'],
+        ['#viz1', 'vega/main.vg.json'],
+        ['#viz2', 'vega/stream.vg.json'],
+        ['#viz3', 'vega/area_heatmap.vg.json'],
+        ['#viz4', 'vega/histogram_duration.vg.json'],
+        ['#viz5', 'vega/test.vg.json'],
+        ['#viz6', 'vega/gapminder.vg.json']
+    ];
 
-    var spec = 'vega/main.vg.json'
-    vegaEmbed('#viz1', spec)
-        .then(function (result) { })
-        .catch(console.error);
+    for(let i = 0; i < visuals.length; i++) {
+        let element = visuals[i][0];
+        let json = visuals[i][1];
 
-    var spec2 = 'vega/stream.vg.json'
-    vegaEmbed('#viz2', spec2)
+        vegaEmbed(element, json)
         .then(function (result) { })
         .catch(console.error);
-
-    var spec3 = 'vega/area_heatmap.vg.json'
-    vegaEmbed('#viz3', spec3)
-        .then(function (result) { })
-        .catch(console.error);
-
-    var spec4 = 'vega/histogram_duration.vg.json'
-    vegaEmbed('#viz4', spec4)
-        .then(function (result) { })
-        .catch(console.error);
-
-    var spec5 = 'vega/test.vg.json'
-    vegaEmbed('#viz5', spec5)
-        .then(function (result) { })
-        .catch(console.error);
-
-    var spec6 = 'vega/gapminder.vg.json'
-    vegaEmbed('#viz6', spec6)
-        .then(function (result) { })
-        .catch(console.error);
+    }
 </script>
 
 </html>

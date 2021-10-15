@@ -17,7 +17,11 @@
                 "y": {
                     "field": "Area",
                     "type": "quantitative",
-                    "title": "Area (km^2)"
+                    "title": "Area (km^2)",
+                    "axis": {
+                        "format": ".1s",
+                        "grid": false
+                    }
                 },
                 "strokeWidth": {
                     "condition": [
@@ -69,60 +73,7 @@
                             "select": "point"
                         }
                     ]
-                },
-                {
-                    "mark": {
-                        "type": "text",
-                        "align": "center",
-                        "baseline": "middle",
-                        "dx": 0,
-                        "dy": -15
-                    },
-                    "encoding": {
-                        "text": {
-                            "field": "Area",
-                            "type": "quantitative"
-                        }
-                    }
                 }
-            ]
-        },
-        {
-            "encoding": {
-                "y": {
-                    "aggregate": "mean",
-                    "field": "Area",
-                    "type": "quantitative"
-                }
-            },
-
-            "layer": [
-                {
-                    "mark": "rule",
-                    "encoding": {
-                        "color": {
-                            "value": "red"
-                        },
-                        "opacity": {
-                            "value": 0.4
-                        },
-                        "size": {
-                            "value": 3
-                        }
-                    }
-                },
-
-                {
-                    "mark": {
-                      "type": "text",
-                      "align": "right",
-                      "baseline": "bottom",
-                      "dx": -2,
-                      "dy": -2,
-                      "x": "width",
-                      "text": "Average"
-                    }
-                  }
             ]
         }
     ],

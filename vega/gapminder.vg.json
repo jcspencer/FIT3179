@@ -76,7 +76,7 @@
           "field": "DurationDays",
           "scale": {
             "domain": [
-              -5,
+              0,
               60
             ],
             "domainMax": 40
@@ -108,7 +108,7 @@
           }
         ]
       },
-      "width": 800,
+      "width": 900,
       "height": 400,
       "mark": "point",
       "params": [
@@ -137,7 +137,54 @@
             "param": "click",
             "field": "d_Cause",
             "scale": {
-              "scheme": "tableau20"
+              "domain": [
+                "Accidental",
+                "Escaped Hazard Reduction",
+                "Undetermined",
+                "Escaped Pile Burn",
+                "Juvenile (fire play)",
+                "Debris Burning",
+                "Equipment Use",
+                "Lightning",
+                "Incendiary",
+                "Escaped Permit",
+                "Miscellaneous/Other",
+                "Rail",
+                "Arson",
+                "Electrical",
+                "Campfire",
+                "Natural",
+                "Smoking",
+                "Suspicious",
+                "Machinery/Slasher",
+                "Burning Off - Illegal",
+                "Motor Vehicle",
+                "Power Line",
+                "Burning Off - Legal",
+                "No Fire"
+              ],
+              "range": [
+                "#4c78a8",
+                "#9ecae9",
+                "#f58518",
+                "#ffbf79",
+                "#54a24b",
+                "#88d27a",
+                "#b79a20",
+                "#f2cf5b",
+                "#439894",
+                "#83bcb6",
+                "#e45756",
+                "#ff9d98",
+                "#79706e",
+                "#bab0ac",
+                "#d67195",
+                "#fcbfd2",
+                "#b279a2",
+                "#d6a5c9",
+                "#9e765f",
+                "#d8b5a5"
+              ]
             }
           },
           "value": "lightgray"
@@ -161,7 +208,8 @@
             "encodings": [
               "color"
             ]
-          }
+          },
+          "value": "Lightning"
         }
       ],
       "transform": [

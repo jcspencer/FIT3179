@@ -353,3 +353,19 @@ p {
     display:table-cell;
     vertical-align:middle;
 }
+
+.spacer {
+    background-color: #2980b9;
+    text-align: center;
+    padding: 10px 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.spacer h1 {
+    color: #ecf0f1 !important;
+}
+
+.charcoal-bg {
+    background-color: #95a5a6;
+}

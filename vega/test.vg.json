@@ -100,7 +100,8 @@
                     {
                         "field": "Area",
                         "type": "quantitative",
-                        "title": "Area"
+                        "title": "Area",
+                        "format": ".2f"
                     },
                     {
                         "field": "Date",

@@ -37,6 +37,7 @@
                 "y": {
                     "aggregate": "sum",
                     "field": "Area",
+                    "title": "Area (km2)",
                     "axis": null
                 },
                 "color": {
@@ -116,9 +117,11 @@
     ],
     "config": {
         "axis": {
-            "titleFont": "PT Serif",
-            "labelFont": "Open Sans"
-        },
+            "titleFont": "Open Sans",
+            "labelFont": "Open Sans",
+            "domain": false,
+            "titleFontSize": 14
+          },
         "title": {
             "font": "PT Serif",
             "fontSize": 24

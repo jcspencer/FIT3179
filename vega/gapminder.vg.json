@@ -1,111 +1,176 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Fires over Time",
-    "data": {
-      "url": "data/gapminder.json"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Fires over Time",
+  "data": {
+    "url": "data/gapminder.json"
+  },
+  "transform": [
+    {
+      "filter": {
+        "field": "DurationDays",
+        "lte": 60
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "strokeWidth": 0,
+      "step": 13
     },
-    "transform": [
-        {
-            "filter": {
-                "field": "DurationDays",
-                "lte": 60
-            }
-        }
-    ],
-    "config": {
-        "view": {
-            "strokeWidth": 0,
-            "step": 13
-        },
-        "axis": {
-            "titleFont": "PT Serif",
-            "labelFont": "Open Sans",
-            "domain": false
-        },
-        "title": {
-            "font": "PT Serif",
-            "fontSize": 24,
-            "align": "center"
-        },
-        "legend": {
-            "titleFont": "Open Sans",
-            "titleFontSize": 16,
-            "labelFont": "Open Sans",
-            "labelFontSize": 14
-        }
+    "axis": {
+      "titleFont": "Open Sans",
+      "labelFont": "Open Sans",
+      "domain": false,
+      "titleFontSize": 14
     },
-    "hconcat": [
-      {
-        "encoding": {
-          "color": {
-            "condition": {
-              "param": "brush",
-              "title": "Fire Cause",
-              "field": "d_Cause",
-              "type": "nominal",
-              "scale": {
-                "scheme": "tableau20"
-              },
-              "legend": null
+    "title": {
+      "font": "PT Serif",
+      "fontSize": 24,
+      "align": "center"
+    },
+    "legend": {
+      "titleFont": "Open Sans",
+      "titleFontSize": 16,
+      "labelFont": "Open Sans",
+      "labelFontSize": 14
+    }
+  },
+  "hconcat": [
+    {
+      "encoding": {
+        "color": {
+          "condition": {
+            "param": "brush",
+            "title": "Fire Cause",
+            "field": "d_Cause",
+            "type": "nominal",
+            "scale": {
+              "scheme": "tableau20"
             },
-            "value": "lightgray",
             "legend": null
           },
-          "size": {
-            "title": "Fire Area (km2)",
-            "field": "Area",
-            "scale": {"domain": [-1, 50]},
-            "type": "quantitative"
+          "value": "lightgray",
+          "legend": null
+        },
+        "size": {
+          "title": "Fire Area (km2)",
+          "field": "Area",
+          "scale": {
+            "domain": [
+              -1,
+              50
+            ]
           },
-          "x": {
-            "field": "Date",
-            "timeUnit": "yearmonth",
-            "title": "Date",
-            "axis": {"format": "%b %Y"}
-          },
-          "y": {
-            "title": "Average Fire Duration (days)",
-            "field": "DurationDays",
-            "scale": {
-                "domain": [-5, 60],
-                "domainMax": 40
-            },
-            "type": "quantitative"
+          "type": "quantitative"
+        },
+        "x": {
+          "field": "Date",
+          "timeUnit": "yearmonth",
+          "title": "Date",
+          "axis": {
+            "format": "%b %Y"
           }
         },
-        "width": 900,
-        "height": 400,
-        "mark": "point",
-        "params": [{
-          "name": "brush",
-          "select": {"type": "interval", "encodings": ["x"]}
-        }],
-        "transform": [{"filter": {"param": "click"}}]
-      },
-      {
-        "encoding": {
-          "color": {
-            "condition": {
-              "param": "click",
-              "field": "d_Cause",
-              "scale": {
-                "scheme": "tableau20"
-              }
-            },
-            "value": "lightgray"
+        "y": {
+          "title": "Average Fire Duration (days)",
+          "field": "DurationDays",
+          "scale": {
+            "domain": [
+              -5,
+              60
+            ],
+            "domainMax": 40
           },
-          "x": {"aggregate": "count"},
-          "y": {"title": "Fire Cause", "field": "d_Cause"}
+          "type": "quantitative"
         },
-        "width": 300,
-        "height": 400,
-        "mark": "bar",
-        "params": [{
+        "tooltip": [
+          {
+            "field": "Date",
+            "type": "temporal",
+            "title": "Date",
+            "timeUnit": "yearmonthdate"
+          },
+          {
+            "field": "Area",
+            "type": "quantitative",
+            "title": "Area (km^2)",
+            "format": ".1f"
+          },
+          {
+            "field": "d_Cause",
+            "title": "Cause",
+            "type": "nominal"
+          },
+          {
+            "field": "DurationDays",
+            "type": "quantitative",
+            "title": "Duration (Days)"
+          }
+        ]
+      },
+      "width": 800,
+      "height": 400,
+      "mark": "point",
+      "params": [
+        {
+          "name": "brush",
+          "select": {
+            "type": "interval",
+            "encodings": [
+              "x"
+            ]
+          }
+        }
+      ],
+      "transform": [
+        {
+          "filter": {
+            "param": "click"
+          }
+        }
+      ]
+    },
+    {
+      "encoding": {
+        "color": {
+          "condition": {
+            "param": "click",
+            "field": "d_Cause",
+            "scale": {
+              "scheme": "tableau20"
+            }
+          },
+          "value": "lightgray"
+        },
+        "x": {
+          "aggregate": "count"
+        },
+        "y": {
+          "title": "Fire Cause",
+          "field": "d_Cause"
+        }
+      },
+      "width": 250,
+      "height": 400,
+      "mark": "bar",
+      "params": [
+        {
           "name": "click",
-          "select": {"type": "point", "encodings": ["color"]}
-        }],
-        "transform": [{"filter": {"param": "brush"}}]
-      }
-    ]
-  }
-  
+          "select": {
+            "type": "point",
+            "encodings": [
+              "color"
+            ]
+          }
+        }
+      ],
+      "transform": [
+        {
+          "filter": {
+            "param": "brush"
+          }
+        }
+      ]
+    }
+  ]
+}

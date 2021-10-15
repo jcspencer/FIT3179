@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
-        "url": "data/mean_area_burnt_year.json"
+        "url": "data/gapminder.json"
     },
     "config": {
         "view": {
@@ -9,10 +9,11 @@
             "step": 13
         },
         "axis": {
-            "titleFont": "PT Serif",
+            "titleFont": "Open Sans",
             "labelFont": "Open Sans",
-            "domain": false
-        },
+            "domain": false,
+            "titleFontSize": 14
+          },
         "title": {
             "font": "PT Serif",
             "fontSize": 24,
@@ -91,8 +92,8 @@
             "width": "container"
         },
         {
-            "width": "container",
             "height": 400,
+            "width": "container",
             "mark": "bar",
             "transform": [
                 {
@@ -115,10 +116,12 @@
             "encoding": {
                 "y": {
                     "field": "d_Cause",
-                    "sort": "-x"
+                    "sort": "-x",
+                    "title": "Cause"
                 },
                 "x": {
-                    "aggregate": "count"
+                    "aggregate": "count",
+                    "title": "Number of Fires"
                 },
                 "color": {
                     "condition": {

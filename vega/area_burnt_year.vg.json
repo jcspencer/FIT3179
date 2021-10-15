@@ -4,7 +4,7 @@
     "data": {
         "url": "data/burnt_per_year.json"
     },
-    "height": 400,
+    "height": 300,
     "width": "container",
     "title": "Area Burnt (km^2) per Year",
     "layer": [

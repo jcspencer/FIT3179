@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "height": 800,
+    "height": 600,
     "width": "container",
     "title": {
         "text": "NSW Bushfires by Location",
@@ -8,7 +8,10 @@
         "color": "#777"
     },
     "projection": {
-        "type": "equirectangular"
+        "type": "equirectangular",
+        "center": [
+            -31.967, 145.963
+        ]
     },
     "layer": [
         {

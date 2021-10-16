@@ -50,13 +50,22 @@
                         "title": "Area (km^2)",
                         "format": ".1f"
                     }
-                ]
+                ],
+                "color": {
+                    "condition": {
+                        "test": {
+                            "field": "Year",
+                            "range": [2019, 2020]
+                        },
+                        "value": "#e74c3c"
+                    },
+                    "value": "#2980b9"
+                }
             },
             "layer": [
                 {
                     "mark": {
                         "type": "bar",
-                        "fill": "#4C78A8",
                         "stroke": "black",
                         "cursor": "pointer"
                     },

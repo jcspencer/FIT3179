@@ -320,7 +320,7 @@ navbar doesn't cut into the visuals
 .heading-container {
     text-align: center;
     padding: 25px 25px;
-    margin: 48px;
+    margin-top: 24px;
 }
 
 .heading {

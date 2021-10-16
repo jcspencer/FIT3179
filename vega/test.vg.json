@@ -53,7 +53,7 @@
             },
             "encoding": {
                 "x": {
-                    "timeUnit": "yearmonth",
+                    "timeUnit": "yearmonthdate",
                     "field": "Date",
                     "type": "temporal",
                     "axis": {
